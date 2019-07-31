@@ -3,11 +3,11 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "assetsSubDirectory": "./",
+  "homepage": "https://jifang951357.github.io/",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "webpack-dev-server  --hot --inline --config dev.js",
-    "build": "webpack -p --progress --profile --colors --config prod.js",
+    "build": "webpack --progress --colors --display modules --display reason --hide-modules --config prod.js",
     "buildjs": "node scripts/build.js",
     "devbuild": "webpack-dev-server  --inline --content-base ./build --config prod.js"
   },
@@ -16,6 +16,7 @@
   "dependencies": {
     "antd": "^3.20.5",
     "bootstrap-sass": "^3.3.6",
+    "cross-env": "^5.2.0",
     "html-webpack-plugin": "^3.2.0",
     "immutability-helper": "^3.0.1",
     "node-sass": "^3.8.0",

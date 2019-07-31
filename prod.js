@@ -9,8 +9,7 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, "build/"),
-    filename: "/js/[name].js",
-    chunkFilename: "[id].chunk.js"
+    filename: "/js/[name].js"
   },
   resolve: {
     extensions: ["", ".js", ".jsx", ".ts", ".tsx", ".webpack.js", ".web.js"]
@@ -32,6 +31,41 @@ module.exports = {
           limit: 10000,
           name: "[name].[ext]"
         }
+      }
+    ],
+    rules: [
+      //1.0的是loaders
+      //处理js中的loader
+      {
+        test: /\.tsx$/,
+        loader: "ts-loader",
+        include: path.resolve(__dirname, "/src"), //指定打包的文件
+        exclude: path.resolve(__dirname, "/node_modules") //排除打包的文件，加速打包时间
+      },
+      //处理css中的loader
+      {
+        test: /\.css$/,
+        loader: "style-loader!css-loader?importLoaders=1!postcss-loader" //@import进来的样式在问号后加
+      },
+      //处理sass中的loader
+      {
+        test: /\.scss$/,
+        loader: "style-loader!css-loader!postcss-loader!sass-loader"
+      },
+      //处理html模板中的loader
+      {
+        test: /\.html$/,
+        loader: "html-loader"
+      },
+      //处理ejs模板中的loader,以.tpl后缀结尾的
+      {
+        test: /\.tpl$/,
+        loader: "ejs-loader"
+      },
+      //处理图片中的loader,file-loader,url-loader,image-webpack-loader相互配合(图片格式转换base64 图片压缩)
+      {
+        test: /\.(png|jpg|gif|svg)$/i, //模板中的图片放相对路径: src="${require('../imgs/aaa.jpg')}"
+        loader: "url-loader"
       }
     ]
   },
@@ -63,13 +97,13 @@ module.exports = {
         // https://github.com/kangax/html-minifier#options-quick-reference
       }
     })
-  ],
-  devServer: {
-    // proxy: {
-    //   '/*': {
-    //     target: 'http://localhost:8000'
-    //   },
-    // }
-    port: "8000"
-  }
+  ]
+  // devServer: {
+  //   // proxy: {
+  //   //   '/*': {
+  //   //     target: 'http://localhost:8000'
+  //   //   },
+  //   // }
+  //   port: "8000"
+  // }
 };
