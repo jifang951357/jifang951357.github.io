@@ -7,18 +7,6 @@ import { connect } from "react-redux";
 import { commodityOverall, shoppingTrolleyOverall } from "../redux/actions";
 
 function CommodityItem(props) {
-  // 添加购物车开关
-  const [addShoppingTrolleyButton, setAddShoppingTrolleyButton] = useState(
-    false
-  );
-
-  useEffect(() => {
-    if (props.item.amount === 0) {
-      setAddShoppingTrolleyButton(true);
-    } else {
-      setAddShoppingTrolleyButton(false);
-    }
-  });
   /**
    * 添加购物车
    * @param Goodtem
@@ -67,7 +55,7 @@ function CommodityItem(props) {
           type="primary"
           icon="shopping-cart"
           style={{ float: "right" }}
-          disabled={addShoppingTrolleyButton}
+          disabled={props.item.amount === 0}
           onClick={() => addShoppingTrolley(props.item)}
         >
           添加购物车

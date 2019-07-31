@@ -5,7 +5,8 @@
     "jsx": "react",
     "removeComments": true,
     "allowJs": true,
-    "sourceMap": true
+    "sourceMap": true,
+    "outDir": "./dist/"
   },
   "exclude": ["node_modules"]
 }

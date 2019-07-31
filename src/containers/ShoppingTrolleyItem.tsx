@@ -11,24 +11,6 @@ import { commodityOverall, shoppingTrolleyOverall } from "../redux/actions";
  * @param props
  */
 function ShoppingTrolleyItem(props) {
-  // 添加数量开关
-  const [addButton, setAddButton] = useState(false);
-  // 减少数量开关
-  const [subButton, setSubButton] = useState(false);
-
-  useEffect(() => {
-    if (props.item.total === props.item.amount) {
-      setAddButton(true);
-    } else {
-      setAddButton(false);
-    }
-    if (props.item.amount === 1) {
-      setSubButton(true);
-    } else {
-      setSubButton(false);
-    }
-  });
-
   /**
    * 添加数量操作
    * @param Goodtem
@@ -135,7 +117,7 @@ function ShoppingTrolleyItem(props) {
           type="primary"
           shape="circle"
           icon="plus"
-          disabled={addButton}
+          disabled={props.item.total === props.item.amount}
           onClick={() => addShoppingTrolley()}
         />
       </Col>
@@ -148,7 +130,7 @@ function ShoppingTrolleyItem(props) {
           shape="circle"
           icon="minus"
           onClick={() => subShoppingTrolley()}
-          disabled={subButton}
+          disabled={props.item.amount === 1}
         />
       </Col>
       <Col span={8}>

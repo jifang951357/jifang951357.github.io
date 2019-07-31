@@ -1,17 +1,15 @@
 import { render } from "react-dom";
 import * as React from "react";
 import { Provider } from "react-redux";
-import App from "./containers/App";
+
+import Main from "./demo2/Main";
+import Popover from "./popover/Popover";
+import App from "./popover/app";
 import { createStore } from "redux";
 import counterApp from "./redux/reducers";
 
-const store = createStore(
-  counterApp,
-  window.devToolsExtension && window.devToolsExtension()
-);
-
 render(
-  <Provider store={store}>
+  <Provider>
     <App />
   </Provider>,
   document.getElementById("app")

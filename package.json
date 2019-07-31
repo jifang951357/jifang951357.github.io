@@ -1,18 +1,23 @@
 {
-  "name": "daily-tools-react",
+  "name": "hooks",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "webpack-dev-server --hot --inline"
+    "dev": "webpack-dev-server  --hot --inline --config dev.js",
+    "build": "webpack -p --progress --profile --colors --config prod.js",
+    "buildjs": "node scripts/build.js",
+    "devbuild": "webpack-dev-server  --inline --content-base ./build --config prod.js"
   },
   "author": "xp",
   "license": "ISC",
   "dependencies": {
     "antd": "^3.20.5",
     "bootstrap-sass": "^3.3.6",
+    "html-webpack-plugin": "^3.2.0",
     "immutability-helper": "^3.0.1",
+    "node-sass": "^3.8.0",
     "object-assign": "^4.1.0",
     "react": "^16.8.6",
     "react-addons-update": "^15.1.0",
@@ -27,7 +32,8 @@
     "tsconfig-paths-webpack-plugin": "^2.0.0",
     "tslint": "^5.7.0",
     "tslint-config-prettier": "^1.10.0",
-    "tslint-react": "^3.2.0"
+    "tslint-react": "^3.2.0",
+    "webpack-manifest-plugin": "^2.0.4"
   },
   "devDependencies": {
     "@types/jest": "^24.0.13",
@@ -49,6 +55,7 @@
     "typescript": "^3.4.5",
     "url-loader": "^0.5.7",
     "webpack": "^1.13.1",
-    "webpack-dev-server": "^1.14.1"
+    "webpack-dev-server": "^1.14.1",
+    "webpack-merge": "^4.2.1"
   }
 }
