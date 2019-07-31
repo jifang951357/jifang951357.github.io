@@ -8,7 +8,7 @@ module.exports = {
     app: "./src/index.tsx"
   },
   output: {
-    path: path.resolve(__dirname, "build/"),
+    path: path.resolve(__dirname, "docs/"),
     filename: "/js/[name].js",
     chunkFilename: "[id].chunk.js"
   },
@@ -51,7 +51,7 @@ module.exports = {
       }
     }), //根据模板自动生成 'Index.cshtml' 文件，并且将带有hash指纹的js打入到html中
     new HtmlWebpackPlugin({
-      filename: path.resolve(__dirname, "build/index.html"), //生成的文件，从 output.path 开始 output.path + "/react.html"
+      filename: path.resolve(__dirname, "docs/index.html"), //生成的文件，从 output.path 开始 output.path + "/react.html"
       template: "index.html", //读取的模板文件,这个路径是相对于当前这个配置文件的
       inject: false, // 自动注入
       hash: true,
